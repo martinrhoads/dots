@@ -5,7 +5,7 @@ version="0.0.7"
 main() {
 
   # paths
-  export dirname=$(dirname $(realpath $0))
+  export dirname=$(dirname $(dirname $(realpath $0)))
   export lib="$dirname/lib"
   export os="$dirname/os"
 
