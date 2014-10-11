@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash -e
 version="0.0.7"
 
 # dots(1) main
@@ -29,8 +29,8 @@ main() {
     reload )
       source "$HOME/.bash_profile"
       ;;
-    boot )
-      boot $2
+    configure )
+      configure $2
       exit
       ;;
     update )
@@ -58,21 +58,17 @@ usage() {
   Commands:
 
     reload                  Reload the dotfiles
-    boot <os>               Bootstrap the given operating system
+    configure               Configure operating system
     update <os|dots>        Update the os or dots
 
 EOF
 }
 
 # Bootstrap the OS
-boot() {
-  if [[ -e "$os/$1/index.sh" ]]; then
-    sh "$os/$1/index.sh"
-  else
-    echo "boot: could not find \"$1\""
-    exit 1
-  fi
+configure() {
+  . $os/`detect_os`/index.sh
 }
+
 
 # update either dots or OS
 update() {
@@ -107,6 +103,22 @@ updatedots() {
 
   echo "updated dots to $(dots --version)."
   exit
+}
+
+
+detect_os() {
+  if test `uname` == Darwin; then
+    platform=osx
+  elif test `lsb_release -is` == Ubuntu; then
+    platform=ubuntu
+  fi
+  
+  if ! test $platform; then
+    echo could not detect platform
+    exit 1
+  fi
+
+  echo $platform
 }
 
 

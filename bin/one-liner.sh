@@ -11,13 +11,12 @@ if test -d /usr/local/lib/dots; then
   exit 1
 fi
 
-sudo -v
-
 
 if ! test -d /usr/local; then
   sudo mkdir /usr/local 
   sudo chmod -R 757 /usr/local
 fi
+
 
 mkdir -p /usr/local/lib/dots /usr/local/bin
 
@@ -28,4 +27,4 @@ curl -L https://github.com/martinrhoads/dots/archive/testing.tar.gz | tar zx --s
 
 ln -sf /usr/local/lib/dots/bin/dots.sh /usr/local/bin/dots
 
-
+/usr/local/bin/dots configure

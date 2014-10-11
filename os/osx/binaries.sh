@@ -1,46 +1,40 @@
-set -e
-set -x
 
-#
-# Binary installer
-#
+package_installed() {
+  if ! test $INSTALLED_PACKAGES; then
+    INSTALLED_PACKAGES=`brew list`
+  fi 
+  echo $INSTALLED_PACKAGES | grep -q "$1"
+}
 
-# Check for Homebrew
+# Check for Homebrew install
 if test ! $(which brew); then
   echo "Installing homebrew..."
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-# Update homebrew
-brew update && brew install caskroom/cask/brew-cask
 
-# Install GNU core utilities (those that come with OS X are outdated)
-brew install coreutils
 
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
-brew install findutils
-
-# Install Bash 4
-brew install bash
-
-# Install more recent versions of some OS X tools
-brew tap homebrew/dupes
-brew install homebrew/dupes/grep
-
-# Install other useful binaries
-binaries=(
-  # sshfs
+packages=(
+  brew-cask
+  coreutils
+  findutils
+  bash
   emacs
   tmux
   zsh
   git
   boot2docker
+  zsh
 )
 
-# Install the binaries
-brew install ${binaries[@]}
+echo installing homebrew packages
 
-# Remove outdated versions from the cellar
-brew cleanup
+for package in "${packages[@]}"; do
+  if ! `package_installed $package`; then
+    echo installing $package
+    brew install $package
+  fi
+done
 
-exit 0
+
+echo done installing homebrew packages

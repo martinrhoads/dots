@@ -1,5 +1,6 @@
 #!/usr/bin/env bash -ex
 
+
 set -e
 
 # modules
@@ -16,6 +17,6 @@ fi
 osx="$os/osx"
 
 # Run each program
-sh "$osx/defaults.sh"
-sh "$osx/binaries.sh"
-sh "$osx/apps.sh"
+. $osx/defaults.sh
+. $osx/binaries.sh
+. $osx/apps.sh
