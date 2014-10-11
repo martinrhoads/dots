@@ -10,6 +10,8 @@ if test -d /usr/local/lib/dots; then
   exit 1
 fi
 
+echo installing dots...
+
 
 if ! test -d /usr/local; then
   sudo mkdir /usr/local 
@@ -25,6 +27,8 @@ cd /usr/local/lib/dots
 curl -L https://github.com/martinrhoads/dots/archive/testing.tar.gz | tar zx --strip 1
 
 ln -sf /usr/local/lib/dots/bin/dots.sh /usr/local/bin/dots
+
+echo done installing dots
 
 echo calling dots configure...
 /usr/local/bin/dots configure
