@@ -22,6 +22,7 @@ packages=(
   zsh
   git
   boot2docker
+  rbenv
 )
 
 

@@ -4,6 +4,7 @@ casks=(
   alfred
   dropbox
   google-chrome
+  google-drive
   flash
   iterm2
   radiant-player
