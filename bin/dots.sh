@@ -5,9 +5,9 @@ version="0.0.7"
 main() {
 
   # paths
-  export dirname=$(dirname $(dirname $(realpath $0)))
-  export lib="$dirname/lib"
-  export os="$dirname/os"
+  export dotsdir=$(dirname $(dirname $(realpath $0)))
+  export lib="$dotsdir/lib"
+  export os="$dotsdir/os"
 
   # parse options
   while [[ "$1" =~ ^- ]]; do
@@ -86,11 +86,18 @@ update() {
 # update dots(1) via git clone
 updatedots() {
   echo "updating dots..."
-  mkdir -p /tmp/dots \
-    && cd /tmp/dots \
-    && curl -L# https://github.com/matthewmueller/dots/archive/master.tar.gz | tar zx --strip 1 \
-    && ./install.sh \
-    && echo "updated dots to $(dots --version)."
+
+  if ! test -d /usr/local/lib/dots/.git; then
+      echo checking out dots repo...
+      git clone --bare https://github.com/martinrhoads/dots /usr/local/lib/dots/.git
+  fi
+
+  (
+    cd /usr/local/lib/dots
+    git pull
+  )
+
+  echo "updated dots to $(dots --version)."
   exit
 }
 

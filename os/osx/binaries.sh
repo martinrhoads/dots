@@ -34,6 +34,7 @@ binaries=(
   tmux
   zsh
   git
+  boot2docker
 )
 
 # Install the binaries

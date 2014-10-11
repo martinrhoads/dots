@@ -11,6 +11,8 @@ if test -d /usr/local/lib/dots; then
   exit 1
 fi
 
+sudo -v
+
 
 if ! test -d /usr/local; then
   sudo mkdir /usr/local 
