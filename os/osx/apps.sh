@@ -7,6 +7,7 @@ casks=(
   google-drive
   flash
   iterm2
+  lastpass-universal
   radiant-player
   vagrant
   virtualbox
