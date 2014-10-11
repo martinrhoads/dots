@@ -37,9 +37,6 @@ main() {
 
   # run command
   case $1 in
-    reload )
-      source "$HOME/.bash_profile"
-      ;;
     configure )
       configure
       exit
@@ -51,10 +48,6 @@ main() {
         exit
       fi
       update $2
-      exit
-      ;;
-    updatedots )
-      updatedots
       exit
       ;;
     *)
@@ -77,7 +70,6 @@ usage() {
 
   Commands:
 
-    reload                  Reload the dotfiles
     configure               Configure operating system
     update <os|dots>        Update the os or dots
 

@@ -1,5 +1,5 @@
 # to install:
-# curl https://raw.githubusercontent.com/martinrhoads/dots/testing/one-liner.sh | bash 
+# curl https://raw.githubusercontent.com/martinrhoads/dots/testing/bin/one-liner.sh | bash 
 
 set -x
 set -e
