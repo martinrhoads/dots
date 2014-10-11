@@ -10,7 +10,12 @@ set -e
 main() {
 
   # paths
+    echo \$0 is $0
+    echo readlink is $(readlink $0)
+    echo bash source is "${BASH_SOURCE[0]}"
   export dotsdir=$(dirname $(cd $(dirname $( readlink $0) ) && echo $(pwd) ))
+  echo dotsdir is $dotsdir
+  exit 1
   export lib="$dotsdir/lib"
   export os="$dotsdir/os"
 

@@ -4,12 +4,6 @@ set -e
 
 # Load modules
 source "$lib/user/index.sh"
-source "$lib/is-ubuntu/index.sh"
-
-# Only run if we're running Ubuntu
-if [ 0 -eq `ubuntu` ]; then
-  exit 0
-fi
 
 # Add sources
 curl https://get.docker.io/gpg | apt-key add -

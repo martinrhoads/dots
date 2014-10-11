@@ -49,7 +49,6 @@ The Ubuntu build does the following:
 * Consider rewriting to be a cross-compiled Go project
 * improve modularity (is there a way to source single functions from files?)
 * generalize configuration (use secret gists for configuration)
-* git-config
 * ubuntu profile
 * logging
 * much more...
