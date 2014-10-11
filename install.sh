@@ -6,7 +6,14 @@ lib="/usr/local/lib"
 bin="/usr/local/bin"
 
 # make in case they aren't already there
-sudo mkdir -p $lib $bin
+sudo mkdir -p $lib $bin && sudo 
+
+if ! test -d /usr/local; then
+  sudo mkdir /usr/local 
+  sudo chown -R 757 /usr/local
+fi
+
+mkdir -p $lib $bin
 
 # Copy the path
 rm -rf $lib/dots && cp -R $dirname "$lib/"
