@@ -10,7 +10,7 @@ set -e
 main() {
 
   # paths
-  export dotsdir=$(dirname $(cd $(dirname $0) && echo $(pwd) ))
+  export dotsdir=$(dirname $(cd $(dirname $( readlink $0) ) && echo $(pwd) ))
   export lib="$dotsdir/lib"
   export os="$dotsdir/os"
 
