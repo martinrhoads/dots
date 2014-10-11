@@ -5,7 +5,7 @@ version="0.0.7"
 main() {
 
   # paths
-  export dotsdir=$(dirname $(dirname $(realpath $0)))
+  export dotsdir=$(dirname $(cd $(dirname $0) && echo $(pwd) ))
   export lib="$dotsdir/lib"
   export os="$dotsdir/os"
 
@@ -90,6 +90,7 @@ updatedots() {
   if ! test -d /usr/local/lib/dots/.git; then
       echo checking out dots repo...
       git clone --bare https://github.com/martinrhoads/dots /usr/local/lib/dots/.git
+      git config core.bare false
   fi
 
   (
@@ -101,23 +102,6 @@ updatedots() {
   exit
 }
 
-# "readlink -f" shim for mac os x
-realpath() {
-  target=$1
-  cd `dirname $target`
-  target=`basename $target`
-
-  # Iterate down a (possible) chain of symlinks
-  while [ -L "$target" ]
-  do
-      target=`readlink $target`
-      cd `dirname $target`
-      target=`basename $target`
-  done
-
-  dir=`pwd -P`
-  echo $dir/$target
-}
 
 # Call main
 main "$@"
