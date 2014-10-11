@@ -31,6 +31,13 @@ tap_installed() {
   echo $INSTALLED_TAPS | grep -q "$1"
 }
 
+
+if ! `brew cask > /dev/null 2>&1`; then
+  echo installing brew-cask
+  brew install caskroom/cask/brew-cask
+fi
+
+
 INSTALLED_CASKS=`brew cask list`
 
 cask_installed() {
