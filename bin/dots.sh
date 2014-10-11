@@ -88,9 +88,12 @@ updatedots() {
   echo "updating dots..."
 
   if ! test -d /usr/local/lib/dots/.git; then
+    (
+      cd /usr/local/lib/dots
       echo checking out dots repo...
-      git clone --bare https://github.com/martinrhoads/dots /usr/local/lib/dots/.git
+      git clone --bare https://github.com/martinrhoads/dots .git
       git config core.bare false
+    )
   fi
 
   (
