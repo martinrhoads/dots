@@ -24,7 +24,7 @@ mkdir -p /usr/local/lib/dots /usr/local/bin
 
 mkdir -p /usr/local/lib/dots
 cd /usr/local/lib/dots
-curl -L https://github.com/martinrhoads/dots/archive/testing.tar.gz | tar zx --strip 1
+curl -s -L https://github.com/martinrhoads/dots/archive/testing.tar.gz | tar zx --strip 1
 
 ln -sf /usr/local/lib/dots/bin/dots.sh /usr/local/bin/dots
 
