@@ -21,4 +21,4 @@ mkdir -p /usr/local/lib/dots
 cd /usr/local/lib/dots
 curl -L https://github.com/matthewmueller/dots/archive/master.tar.gz | tar zx --strip 1
 
-ln -s /usr/local/lib/dots /usr/local/bin/dots
+ln -s /usr/local/lib/dots /usr/local/bin/dots/dots.sh
