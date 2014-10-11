@@ -14,7 +14,6 @@ package_installed() {
 
 
 packages=(
-  brew-cask
   coreutils
   findutils
   bash
