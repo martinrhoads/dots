@@ -93,6 +93,7 @@ updatedots() {
       echo checking out dots repo...
       git clone --bare https://github.com/martinrhoads/dots .git
       git config core.bare false
+      git add .
       git checkout testing
     )
   fi
