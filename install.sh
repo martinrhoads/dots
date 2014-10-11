@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -ex
 
 # paths
 dirname=$( cd $(dirname $0) && echo $(pwd) )
@@ -6,8 +6,7 @@ lib="/usr/local/lib"
 bin="/usr/local/bin"
 
 # make in case they aren't already there
-mkdir -p "/usr/local/lib"
-mkdir -p "/usr/local/bin"
+sudo mkdir -p $lib $bin
 
 # Copy the path
 rm -rf $lib/dots && cp -R $dirname "$lib/"
