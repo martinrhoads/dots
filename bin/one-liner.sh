@@ -1,7 +1,6 @@
 # to install:
-# curl https://raw.githubusercontent.com/martinrhoads/dots/testing/bin/one-liner.sh | bash 
+# curl-s https://raw.githubusercontent.com/martinrhoads/dots/testing/bin/one-liner.sh | bash 
 
-set -x
 set -e
 
 if test -d /usr/local/lib/dots; then
@@ -27,4 +26,5 @@ curl -L https://github.com/martinrhoads/dots/archive/testing.tar.gz | tar zx --s
 
 ln -sf /usr/local/lib/dots/bin/dots.sh /usr/local/bin/dots
 
+echo calling dots configure...
 /usr/local/bin/dots configure
