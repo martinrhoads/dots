@@ -1,6 +1,9 @@
 # to install:
 # curl https://raw.githubusercontent.com/martinrhoads/dots/testing/one-liner.sh | bash 
 
+set -x
+set -e
+
 if test -d /usr/local/lib/dots; then
   echo /usr/local/lib/dots already exists. 
   echo remove /usr/local/lib/dots if you would like to proceede.
