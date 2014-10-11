@@ -11,7 +11,7 @@ fi
 
 if ! test -d /usr/local; then
   sudo mkdir /usr/local 
-  sudo chown -R 757 /usr/local
+  sudo chmod -R 757 /usr/local
 fi
 
 mkdir -p /usr/local/lib/dots /usr/local/bin
