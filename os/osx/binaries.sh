@@ -1,14 +1,15 @@
-INSTALLED_PACKAGES=`brew list`
-
-package_installed() {
-  echo $INSTALLED_PACKAGES | grep -q "$1"
-}
-
 # Check for Homebrew install
 if test ! $(which brew); then
   echo "Installing homebrew..."
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
+
+
+INSTALLED_PACKAGES=`brew list`
+
+package_installed() {
+  echo $INSTALLED_PACKAGES | grep -q "$1"
+}
 
 
 
