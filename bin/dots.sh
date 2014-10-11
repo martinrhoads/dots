@@ -1,5 +1,10 @@
-#!/usr/bin/env bash -e
+#!/bin/bash 
+
+#!/usr/bin/env bash
 version="0.0.7"
+
+set -o nounset
+set -e
 
 # dots(1) main
 main() {
@@ -8,6 +13,12 @@ main() {
   export dotsdir=$(dirname $(cd $(dirname $0) && echo $(pwd) ))
   export lib="$dotsdir/lib"
   export os="$dotsdir/os"
+
+  arg1=${1:-}
+  if [ -z ${arg1} ]; then
+    usage
+    exit
+  fi
 
   # parse options
   while [[ "$1" =~ ^- ]]; do
@@ -30,11 +41,20 @@ main() {
       source "$HOME/.bash_profile"
       ;;
     configure )
-      configure $2
+      configure
       exit
       ;;
     update )
+      arg2=${2:-}
+      if test -z "$arg2"; then
+        usage 
+        exit
+      fi
       update $2
+      exit
+      ;;
+    updatedots )
+      updatedots
       exit
       ;;
     *)
@@ -66,17 +86,30 @@ EOF
 
 # Bootstrap the OS
 configure() {
+  echo configuring system
+  # set -x
   . $os/`detect_os`/index.sh
+  echo done configuring system\!
 }
 
 
 # update either dots or OS
 update() {
-  if [[ -e "$os/$1/index.sh" ]]; then
-    sh "$os/$1/update.sh"
-  else
-    updatedots
-  fi
+  case $1 in
+    os )
+      . $os/`detect_os`/update.sh
+    ;;
+    dots )
+      updatedots
+      ;;
+    *)
+      usage
+      exit
+      ;;
+  esac
+
+
+
 }
 
 # update dots(1) via git clone
@@ -92,7 +125,8 @@ updatedots() {
       git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
       git add .
       git checkout testing
-
+      git config branch.testing.remote origin
+      git config branch.testing.merge refs/heads/testing
     )
   fi
 

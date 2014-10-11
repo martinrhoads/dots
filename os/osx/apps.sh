@@ -25,17 +25,15 @@ taps=(
   homebrew/dupes
 )
 
+INSTALLED_TAPS=`brew tap`
+
 tap_installed() {
-  if ! test $INSTALLED_TAPS; then
-    INSTALLED_TAPS=`brew tap`
-  fi
   echo $INSTALLED_TAPS | grep -q "$1"
 }
 
+INSTALLED_CASKS=`brew cask list`
+
 cask_installed() {
-  if ! test $INSTALLED_CASKS; then
-    INSTALLED_CASKS=`brew cask list`
-  fi
   echo $INSTALLED_CASKS | grep -q "$1"
 }
 
@@ -64,7 +62,7 @@ main() {
   done
 
 
-  for font in ${font[@]}; do
+  for font in ${fonts[@]}; do
     if ! `cask_installed $font`; then
       echo installing font $font
       brew cask install $font
@@ -82,6 +80,4 @@ homebrew() {
 }
 
 
-echo installing casks..
 main "$@"
-echo done installing casks\!

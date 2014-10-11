@@ -7,7 +7,6 @@
 # Some things taken from here
 # https://github.com/mathiasbynens/dotfiles/blob/master/.osx
 
-echo configuring system...
 
 
 # Ask for the administrator password upfront
@@ -339,4 +338,3 @@ defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
 # Kill affected applications
 ###############################################################################
 
-echo done configuring system\!

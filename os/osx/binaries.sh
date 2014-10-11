@@ -1,8 +1,6 @@
+INSTALLED_PACKAGES=`brew list`
 
 package_installed() {
-  if ! test $INSTALLED_PACKAGES; then
-    INSTALLED_PACKAGES=`brew list`
-  fi 
   echo $INSTALLED_PACKAGES | grep -q "$1"
 }
 
@@ -24,10 +22,8 @@ packages=(
   zsh
   git
   boot2docker
-  zsh
 )
 
-echo installing homebrew packages
 
 for package in "${packages[@]}"; do
   if ! `package_installed $package`; then
@@ -37,4 +33,3 @@ for package in "${packages[@]}"; do
 done
 
 
-echo done installing homebrew packages
