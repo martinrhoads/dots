@@ -28,3 +28,4 @@ curl -L https://github.com/martinrhoads/dots/archive/testing.tar.gz | tar zx --s
 
 ln -sf /usr/local/lib/dots/bin/dots.sh /usr/local/bin/dots
 
+
