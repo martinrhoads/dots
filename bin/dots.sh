@@ -9,13 +9,18 @@ set -e
 # dots(1) main
 main() {
 
-  # paths
-    echo \$0 is $0
-    echo readlink is $(readlink $0)
-    echo bash source is "${BASH_SOURCE[0]}"
-  export dotsdir=$(dirname $(cd $(dirname $( readlink $0) ) && echo $(pwd) ))
-  echo dotsdir is $dotsdir
-  exit 1
+  set +e
+  read_link=$(readlink $0)
+  set -e 
+
+  if test -z $read_link; then
+    my_path=$0
+  else
+    my_path=$read_link
+  fi
+
+
+  export dotsdir=$(dirname $(cd $(dirname $my_path ) && echo $(pwd) ))
   export lib="$dotsdir/lib"
   export os="$dotsdir/os"
 
