@@ -19,6 +19,7 @@ mkdir -p /usr/local/lib/dots /usr/local/bin
 
 mkdir -p /usr/local/lib/dots
 cd /usr/local/lib/dots
-curl -L https://github.com/matthewmueller/dots/archive/master.tar.gz | tar zx --strip 1
+curl -L https://github.com/martinrhoads/dots/archive/testing.tar.gz | tar zx --strip 1
 
 ln -s /usr/local/lib/dots/dots.sh /usr/local/bin/dots
+
