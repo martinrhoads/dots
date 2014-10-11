@@ -14,10 +14,11 @@ if ! test -d /usr/local; then
   sudo chown -R 757 /usr/local
 fi
 
-mkdir -p /usr/local/lib /usr/local/bin
+mkdir -p /usr/local/lib/dots /usr/local/bin
 
 
 mkdir -p /usr/local/lib/dots
 cd /usr/local/lib/dots
 curl -L https://github.com/matthewmueller/dots/archive/master.tar.gz | tar zx --strip 1
-sh ./install.sh
+
+ln -s /usr/local/lib/dots /usr/local/bin/dots
