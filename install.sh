@@ -1,6 +1,7 @@
+#!/bin/bash -e
 
 # paths
-dirname=$(dirname $0)
+dirname=$( cd $(dirname $0) && echo $(pwd) )
 lib="/usr/local/lib"
 bin="/usr/local/bin"
 
@@ -9,17 +10,14 @@ mkdir -p "/usr/local/lib"
 mkdir -p "/usr/local/bin"
 
 # Copy the path
-sudo cp -R $dirname "$lib/"
-
-# remove existing bin if it exists
-if [ -e "$bin/dots" ]; then
-  rm "$bin/dots"
-fi
+rm -rf $lib/dots && cp -R $dirname "$lib/"
 
 # symlink dots
-ln -s "$lib/dots/dots.sh" "$bin/dots"
+ln -sf "$lib/dots/dots.sh" "$bin/dots"
 
 # Ubuntu-only: Change from dash to bash
 if [ "$BASH_VERSION" = '' ]; then
   sudo echo "dash    dash/sh boolean false" | debconf-set-selections ; dpkg-reconfigure --frontend=noninteractive dash
 fi
+
+echo done installing dots

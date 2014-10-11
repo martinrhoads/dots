@@ -1,4 +1,4 @@
-# OSX for Hackers (Mavericks/Yosemite)
+# Osx for Hackers (Mavericks/Yosemite)
 #
 # Source: https://gist.github.com/brandonb927/3195465
 
@@ -68,7 +68,7 @@ defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 
 echo ""
 echo "Saving to disk (not to iCloud) by default"
-defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+# defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 echo ""
 echo "Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window"
@@ -143,8 +143,8 @@ sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutio
 ###############################################################################
 
 echo ""
-echo "Showing icons for hard drives, servers, and removable media on the desktop"
-defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+echo "Disable showing icons for hard drives, servers, and removable media on the desktop"
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
 
 echo ""
 echo "Showing all filename extensions in Finder by default"
@@ -314,11 +314,11 @@ sudo pmset -a hibernatemode 0
 
 echo ""
 echo "Remove the sleep image file to save disk space"
-sudo rm /Private/var/vm/sleepimage
+sudo rm -f /Private/var/vm/sleepimage
 echo "Creating a zero-byte file insteadâ€¦"
 sudo touch /Private/var/vm/sleepimage
 echo "â€¦and make sure it canâ€™t be rewritten"
-sudo chflags uchg /Private/var/vm/sleepimage
+sudo chflags -f uchg /Private/var/vm/sleepimage
 
 echo ""
 echo "Disable the sudden motion sensor as itâ€™s not useful for SSDs"
