@@ -1,6 +1,3 @@
-# modules
-source "$lib/symlink/index.sh"
-source "$lib/is-osx/index.sh"
 
 osx="$os/osx"
 

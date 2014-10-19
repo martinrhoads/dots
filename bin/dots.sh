@@ -89,7 +89,6 @@ EOF
 # Bootstrap the OS
 configure() {
   echo configuring system
-  # set -x
   . $os/`detect_os`/index.sh
   echo done configuring system\!
 }

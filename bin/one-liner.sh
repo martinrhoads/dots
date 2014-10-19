@@ -19,14 +19,15 @@ if ! test -d /usr/local; then
 fi
 
 
-mkdir -p /usr/local/lib/dots /usr/local/bin
+sudo mkdir -p /usr/local/lib/dots /usr/local/bin
+sudo chown -R martin:martin /usr/local/lib/dots
 
 
 mkdir -p /usr/local/lib/dots
 cd /usr/local/lib/dots
 curl -s -L https://github.com/martinrhoads/dots/archive/testing.tar.gz | tar zx --strip 1
 
-ln -sf /usr/local/lib/dots/bin/dots.sh /usr/local/bin/dots
+sudo ln -sf /usr/local/lib/dots/bin/dots.sh /usr/local/bin/dots
 
 echo done installing dots
 

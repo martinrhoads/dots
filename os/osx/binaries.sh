@@ -23,6 +23,7 @@ packages=(
   git
   boot2docker
   rbenv
+  ruby-build
   encfs
 )
 
